@@ -6,6 +6,6 @@ import retrofit2.Response
 import retrofit2.http.GET
 
 interface ApiService {
-    @GET("products?limit=10")
+    @GET("products")
     suspend fun getProducts(): Response<ProductListResponse>
 }

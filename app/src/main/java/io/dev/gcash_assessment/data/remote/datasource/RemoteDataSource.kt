@@ -23,5 +23,4 @@ class RemoteDataSource @Inject constructor(
 
         return responseBody.products
     }
-
 }
