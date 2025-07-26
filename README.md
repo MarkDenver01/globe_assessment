@@ -119,10 +119,6 @@ navigation/                    # Navigation Graphs
 
 ---
 
-## 👨‍💻 Author
-- Denver
-
-
 ## ✅ Project Sequence Diagram**
 ```mermaid
 sequenceDiagram
