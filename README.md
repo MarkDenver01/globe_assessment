@@ -67,8 +67,8 @@ navigation/                    # Navigation Graphs
 
 1. Clone the repo:
    ```bash
-   [git clone https://github.com/your-username/complete-denver.git(https://github.com/MarkDenver01/gcash_assessment)
-   cd complete-denver
+   git clone https://github.com/MarkDenver01/globe_assessment
+   cd globe_assessment
    ```
 
 2. Open with **Android Studio Hedgehog** or newer.
