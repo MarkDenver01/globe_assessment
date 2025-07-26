@@ -6,7 +6,7 @@ A modern Android app built using **Jetpack Compose**, **MVVM**, **Clean Architec
 
 ## ✨ JSON DUMMY
 
-- ✅ Server: https://dummyjson.com/products
+- ✅ Api Server: https://dummyjson.com/products
 
 ## ✨ Features
 
@@ -67,7 +67,7 @@ navigation/                    # Navigation Graphs
 
 1. Clone the repo:
    ```bash
-   [git clone https://github.com/your-username/complete-denver.git](https://github.com/MarkDenver01/gcash_assessment)
+   [git clone https://github.com/your-username/complete-denver.git(https://github.com/MarkDenver01/gcash_assessment)
    cd complete-denver
    ```
 
