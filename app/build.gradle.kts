@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    namespace = "io.dev.gcash_assessment"
+    namespace = "io.dev.globe_assessment"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "io.dev.gcash_assessment"
+        applicationId = "io.dev.global_assessment"
         minSdk = 24
         targetSdk = 36
         versionCode = 1

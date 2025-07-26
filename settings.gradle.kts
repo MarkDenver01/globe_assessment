@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "gcash_assessment"
+rootProject.name = "globe_assessment"
 include(":app")
