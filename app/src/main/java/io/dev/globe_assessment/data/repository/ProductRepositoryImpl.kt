@@ -20,7 +20,6 @@ class ProductRepositoryImpl @Inject constructor(
             localDataSource.cacheProducts(products.map { it.toEntity() })
             products.map { it.toDomain() }
         } catch (e: Exception) {
-            Log.e("DENVER", "error: $e")
             // Fallback to local cache
             val cached = localDataSource.getCachedProducts()
             cached.map { it.toDomain() }

@@ -7,6 +7,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import io.dev.globe_assessment.domain.util.DataResult
@@ -32,7 +33,8 @@ fun ProductDetailsScreen(
         topBar = {
             TopBar(
                 title = "Product Details",
-                modifier = Modifier.statusBarsPadding(),
+                modifier = Modifier
+                    .statusBarsPadding(),
                 onBack = onBack
             )
         },
