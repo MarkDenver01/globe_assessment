@@ -1,20 +1,18 @@
 package io.dev.gcash_assessment.presentation.viewmodel
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.dev.gcash_assessment.domain.model.Product
-import io.dev.gcash_assessment.domain.repository.ProductRepository
 import io.dev.gcash_assessment.domain.usecase.ProductUseCase
 import io.dev.gcash_assessment.domain.util.DataResult
-import io.dev.gcash_assessment.presentation.viewmodel.state.UiState
+import io.dev.gcash_assessment.presentation.compose.products.ProductListScreen
+import io.dev.gcash_assessment.presentation.viewmodel.state.ProductListUiState
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.onStart
-import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.fold
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -22,9 +20,6 @@ import javax.inject.Inject
 class ProductViewModel @Inject constructor(
     private val productUseCase: ProductUseCase
 ) : ViewModel() {
-    private val _uiState = MutableStateFlow<UiState>(UiState.Loading)
-    val uiState: StateFlow<UiState> = _uiState
-
     private val _navigateTo = MutableStateFlow<String?>(null)
     val navigateTo = _navigateTo.asStateFlow()
 
@@ -43,6 +38,13 @@ class ProductViewModel @Inject constructor(
                 _state.value = result
             }
         }
+    }
+
+    fun fetchProductById(productId: Int): Product? {
+        val result = _state.value
+        if (result !is DataResult.Success) return null
+
+        return result.data.firstOrNull { it.id == productId }
     }
 
     fun resetNavigation() {

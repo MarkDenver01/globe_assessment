@@ -10,7 +10,7 @@ import androidx.navigation.compose.rememberNavController
 import dagger.hilt.android.AndroidEntryPoint
 import io.dev.gcash_assessment.navigation.Routes
 import io.dev.gcash_assessment.navigation.favoriteGraph
-import io.dev.gcash_assessment.navigation.productListGraph
+import io.dev.gcash_assessment.navigation.productGraph
 import io.dev.gcash_assessment.navigation.settingsGraph
 import io.dev.gcash_assessment.presentation.theme.Gcash_assessmentTheme
 
@@ -28,7 +28,7 @@ class MainActivity : ComponentActivity() {
                     navController = navController,
                     startDestination = Routes.PRODUCT_LIST_ROUTE
                 ) {
-                    productListGraph(navController)
+                    productGraph(navController)
                     favoriteGraph()
                     settingsGraph()
                 }

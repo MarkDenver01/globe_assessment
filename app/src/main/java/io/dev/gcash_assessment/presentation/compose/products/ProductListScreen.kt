@@ -16,7 +16,7 @@ import io.dev.gcash_assessment.domain.util.DataResult
 import io.dev.gcash_assessment.navigation.Routes
 import io.dev.gcash_assessment.presentation.compose.components.BottomNavigationBar
 import io.dev.gcash_assessment.presentation.compose.components.TopBar
-import io.dev.gcash_assessment.presentation.compose.products.components.ProductList
+import io.dev.gcash_assessment.presentation.compose.products.components.ProductGrid
 import io.dev.gcash_assessment.presentation.viewmodel.ProductViewModel
 
 @Composable
@@ -43,7 +43,7 @@ fun ProductListScreen(
     ) { padding ->
         Box(
             modifier = Modifier
-                .background(Color(0xFFF5F5F5))
+                .background(Color(0xFFF0FFF4))
                 .fillMaxSize()
                 .padding(padding)
         ) {
@@ -67,7 +67,7 @@ fun ProductListScreen(
                 }
 
                 is DataResult.Success -> {
-                    ProductList(
+                    ProductGrid(
                         products = result.data,
                         onProductClick = onProductClick
                     )

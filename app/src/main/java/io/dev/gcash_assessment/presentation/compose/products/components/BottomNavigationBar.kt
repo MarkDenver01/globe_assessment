@@ -1,13 +1,15 @@
 package io.dev.gcash_assessment.presentation.compose.components
 
+import androidx.compose.foundation.background
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import io.dev.gcash_assessment.navigation.BottomNavItem
+import io.dev.gcash_assessment.presentation.compose.products.components.BottomNavItem
 
 @Composable
 fun BottomNavigationBar(
@@ -19,9 +21,9 @@ fun BottomNavigationBar(
     val currentRoute = navBackStackEntry.value?.destination?.route
 
     BottomNavigation(
-        backgroundColor = Color(0xFFFE5D05),
         contentColor = MaterialTheme.colors.onPrimary,
-        modifier = modifier
+        modifier = modifier,
+        backgroundColor = Color(0xFF66BB6A)
     ) {
         BottomNavItem.items.forEach { item ->
             BottomNavigationItem(

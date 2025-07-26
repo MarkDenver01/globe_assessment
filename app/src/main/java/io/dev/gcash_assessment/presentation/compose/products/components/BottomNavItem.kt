@@ -1,7 +1,8 @@
-package io.dev.gcash_assessment.navigation
+package io.dev.gcash_assessment.presentation.compose.products.components
 
 import androidx.annotation.DrawableRes
 import io.dev.gcash_assessment.R
+import io.dev.gcash_assessment.navigation.Routes
 
 sealed class BottomNavItem(
     val route: String,
