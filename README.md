@@ -4,6 +4,10 @@ A modern Android app built using **Jetpack Compose**, **MVVM**, **Clean Architec
 
 ---
 
+## ✨ JSON DUMMY
+
+- ✅ Server: https://dummyjson.com/products
+
 ## ✨ Features
 
 - ✅ Display a list of products with name, price, rating, etc.
