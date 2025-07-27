@@ -9,11 +9,19 @@ import io.dev.globe_assessment.domain.model.Product
 import io.dev.globe_assessment.domain.repository.ProductRepository
 import javax.inject.Inject
 
+/**
+ * Implementation of [ProductRepository] that coordinates between
+ * remote and local data sources to fetch product information.
+ */
 class ProductRepositoryImpl @Inject constructor(
     private val remoteDataSource: RemoteDataSource,
     private val localDataSource: LocalDataSource,
 ) : ProductRepository {
 
+    /**
+     * Fetches a list of products from the remote data source.
+     * Falls back to local cache in case of an exception.
+     */
     override suspend fun getProducts(): List<Product> {
         return try {
             val products = remoteDataSource.fetchProducts()
@@ -26,6 +34,9 @@ class ProductRepositoryImpl @Inject constructor(
         }
     }
 
+    /**
+     * Fetches a product by its ID from the local data source.
+     */
     override suspend fun getProductById(productId: Int): Product {
         return localDataSource.getProductById(productId).toDomain()
     }

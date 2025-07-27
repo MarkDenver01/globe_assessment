@@ -12,10 +12,16 @@ import io.dev.globe_assessment.domain.usecase.GetProductByIdUseCase
 import io.dev.globe_assessment.domain.usecase.GetProductUseCase
 import javax.inject.Singleton
 
+/**
+ * Dagger Hilt module for providing dependencies across the app.
+ */
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
+    /**
+     * Provides a singleton instance of [ProductRepository].
+     */
     @Provides
     @Singleton
     fun provideProductRepository(
@@ -27,11 +33,17 @@ object AppModule {
             localDataSource
         )
 
+    /**
+     * Provides a singleton instance of [GetProductUseCase].
+     */
     @Provides
     @Singleton
     fun providesProductUseCase(repository: ProductRepository): GetProductUseCase =
         GetProductUseCase(repository)
 
+    /**
+     * Provides a singleton instance of [GetProductByIdUseCase].
+     */
     @Provides
     @Singleton
     fun providesProductByIdUseCase(repository: ProductRepository): GetProductByIdUseCase =

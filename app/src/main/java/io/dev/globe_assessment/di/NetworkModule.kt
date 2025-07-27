@@ -16,11 +16,21 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
+/**
+ * Dagger-Hilt module responsible for providing network-related dependencies such as Retrofit,
+ * OkHttpClient, Gson, and RemoteDataSource.
+ */
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
+
+    // Base URL used for network requests
     private const val BASE_URL = "https://dummyjson.com/"
 
+    /**
+     * Provides a logging interceptor for HTTP request/response logging.
+     * Logs the full body of HTTP requests and responses.
+     */
     @Provides
     @Singleton
     fun provideLoggingInterceptor(): HttpLoggingInterceptor =
@@ -28,6 +38,9 @@ object NetworkModule {
             level = HttpLoggingInterceptor.Level.BODY
         }
 
+    /**
+     * Provides a header interceptor that adds default headers (e.g., Content-Type) to every request.
+     */
     @Provides
     @Singleton
     fun provideHeaderInterceptor(): Interceptor =
@@ -35,10 +48,12 @@ object NetworkModule {
             val request = chain.request()
             val requestBuilder = request.newBuilder()
                 .addHeader("Content-Type", "application/json")
-
             chain.proceed(requestBuilder.build())
         }
 
+    /**
+     * Provides a configured OkHttpClient with interceptors and timeout settings.
+     */
     @Provides
     @Singleton
     fun provideOkHttpClient(
@@ -52,11 +67,18 @@ object NetworkModule {
             .readTimeout(30, TimeUnit.SECONDS)
             .build()
 
+    /**
+     * Provides a Gson instance with lenient parsing enabled.
+     * Used by Retrofit to serialize/deserialize JSON.
+     */
     @Provides
     @Singleton
     fun provideGson(): Gson =
         GsonBuilder().setLenient().create()
 
+    /**
+     * Provides a configured Retrofit instance for making API calls.
+     */
     @Provides
     @Singleton
     fun provideRetrofit(
@@ -69,11 +91,17 @@ object NetworkModule {
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
 
+    /**
+     * Provides an instance of ApiService interface that defines API endpoints.
+     */
     @Provides
     @Singleton
     fun provideApiService(retrofit: Retrofit): ApiService =
         retrofit.create(ApiService::class.java)
 
+    /**
+     * Provides a RemoteDataSource which wraps ApiService for abstraction.
+     */
     @Provides
     @Singleton
     fun provideRemoteDataSource(api: ApiService): RemoteDataSource =
