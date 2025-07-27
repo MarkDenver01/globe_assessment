@@ -168,7 +168,8 @@ sequenceDiagram
 ---------------------------------------
 
 ## ✅ Clean Architecture
-<img width="1361" height="418" alt="image" src="https://github.com/user-attachments/assets/4ac973de-7a1a-4086-a0e3-6c4605981fce" />
+<img width="1368" height="445" alt="image" src="https://github.com/user-attachments/assets/24e0657b-8fd5-44e1-96ca-7f2fede20529" />
+
 
 
 
